@@ -32,6 +32,17 @@ app.post("/", function(req, res) {
   const jsonData = JSON.parse.stringify(data);
   
   const url = "https://us4.api.mailchimp.com/3.0/lists3bcf3cbb34";
+
+  const options = {
+    method: "POST",
+    auth: "lho: fd8d2a94f77b14c7c113e1d4a29c6120-us4"
+  }
+
+  https.request(url, options, function(response) {
+    response.on("data", function(data) {
+      console.log(JSON.parse(data));
+    })
+  })
   
   console.log(firstName, lastName, email);
 })
