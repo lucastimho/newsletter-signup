@@ -38,11 +38,13 @@ app.post("/", function(req, res) {
     auth: "lho: fd8d2a94f77b14c7c113e1d4a29c6120-us4"
   }
 
-  https.request(url, options, function(response) {
+  const request = https.request(url, options, function(response) {
     response.on("data", function(data) {
       console.log(JSON.parse(data));
     })
   })
+
+  request.write(jsonData);
   
   console.log(firstName, lastName, email);
 })
